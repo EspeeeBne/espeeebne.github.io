@@ -1,0 +1,40 @@
+{
+    "footer": {
+        "copy": "© {{year}} EspeeeBne. Tüm hakları saklıdır.",
+        "cv": "CV"
+    },
+    "hero": {
+        "title": "Portfolyoma Hoş geldiniz",
+        "subtitle": "Tayfur Furkan Hayat a.k.a. Espe, EspeeeBne, Sora, Rika",
+        "button": "Detaylı Bilgi",
+        "projects":"Projeler",
+        "about":"Hakkımda"
+    },
+    "about": {
+        "pageTitle": "Hakkımda",
+        "title": "Hakkımda",
+        "name": "Tayfur Furkan Hayat",
+        "tagline": "Software Engineer | React, .NET & Beyond",
+        "description": "Evet burası çok boş kendimi özetleyeyim bari ben web üzerine kod yazan biriyim arada can sıkıntısından web tabanlıdan çıkarım o yüzden kendimi software engineer olarak sınıflandırıyorum öyle benden şimdilik bu kadar."
+    },
+    "projects": {
+        "title": "Projelerim",
+        "notFound": "Proje bulunamadı.",
+        "back": "Geri Dön"
+    },
+    "welcome": "Hoş geldiniz, ben Espe",
+    "home":"Ana sayfa",
+    "proje":"Projeler",
+    "abbout":"Hakkımda",
+    "description": "Tayfur Furkan Hayat a.k.a Espe, EspeeeBne, Sora, Rika",
+    "contact": "İletişime Geç",
+    "aboutTitle": "Hakkımda",
+    "projectsTitle": "Projelerim",
+    "appTitle": "Espe Portfolyo",
+    "changeLanguage": "Dil Değiştir",
+    "selectLanguage": "Dil Seçimi",
+    "turkish": "Türkçe",
+    "english": "English",
+    "darkMode": "Koyu Mod",
+    "lightMode": "Aydınlık Mod"
+}
