@@ -13,6 +13,8 @@ import {
     Button,
     Tooltip,
     useMediaQuery,
+    Select,
+    MenuItem,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
@@ -60,6 +62,16 @@ const Header: React.FC = () => {
         exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3 } },
     };
 
+    const sidebarVariants = {
+        open: { x: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
+        closed: { x: '-100%', transition: { type: 'spring', stiffness: 300, damping: 30 } },
+    };
+
+    const listItemVariants = {
+        hover: { scale: 1.05, backgroundColor: theme.palette.action.hover },
+        tap: { scale: 0.95 },
+    };
+
     return (
         <>
             <AnimatePresence>
@@ -93,19 +105,23 @@ const Header: React.FC = () => {
 
                             <Box sx={headerStyles.buttonsContainer}>
                                 <Tooltip title={t('changeLanguage', 'Dil Değiştir')}>
-                                    <IconButton
+                                    <Button
                                         onClick={openLanguageModal}
-                                        color="inherit"
-                                        sx={headerStyles.iconButton}
-                                        aria-label="Change Language"
+                                        variant="outlined"
+                                        sx={{
+                                            textTransform: 'none',
+                                            color: theme.palette.text.primary,
+                                            borderColor: theme.palette.text.primary,
+                                            '&:hover': {
+                                                backgroundColor: theme.palette.action.hover,
+                                                borderColor: theme.palette.text.primary,
+                                            },
+                                            ...(isMobile && { border: 'none' }),
+                                        }}
+                                        startIcon={<TranslateIcon />}
                                     >
-                                        <TranslateIcon />
-                                        {!isMobile && (
-                                            <Typography variant="body1" sx={{ ml: 1, color: theme.palette.text.primary }}>
-                                                {t('changeLanguage', 'Dil Değiştir')}
-                                            </Typography>
-                                        )}
-                                    </IconButton>
+                                        {!isMobile && t('changeLanguage', 'Dil Değiştir')}
+                                    </Button>
                                 </Tooltip>
                                 <Tooltip title={darkMode ? t('lightMode', 'Aydınlık Mod') : t('darkMode', 'Koyu Mod')}>
                                     <IconButton
@@ -124,35 +140,70 @@ const Header: React.FC = () => {
             </AnimatePresence>
 
             <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>
-        <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer} onKeyDown={toggleDrawer}>
-            <NextLink href="/" passHref legacyBehavior>
-            <ListItem component="a" sx={{ textDecoration: 'none' }}>
-                <ListItemText
-                primary={t('home')}
-                primaryTypographyProps={{ sx: { color: 'primary.main' } }}
-                />
-            </ListItem>
-            </NextLink>
+                <motion.div
+                    variants={sidebarVariants}
+                    initial="closed"
+                    animate={isDrawerOpen ? 'open' : 'closed'}
+                    style={{
+                        width: 250,
+                        backgroundColor: theme.palette.background.paper,
+                        height: '100%',
+                        padding: 2,
+                        overflow: 'hidden',
+                    }}
+                    role="presentation"
+                    onClick={toggleDrawer}
+                    onKeyDown={toggleDrawer}
+                >
+                    <NextLink href="/" passHref legacyBehavior>
+                        <motion.div
+                            variants={listItemVariants}
+                            whileHover="hover"
+                            whileTap="tap"
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <ListItem component="a" sx={{ textDecoration: 'none' }}>
+                                <ListItemText
+                                    primary={t('homenav')}
+                                    slotProps={{ primary: { sx: { color: theme.palette.text.primary } } }}
+                                />
+                            </ListItem>
+                        </motion.div>
+                    </NextLink>
 
-            <NextLink href="/about" passHref legacyBehavior>
-            <ListItem component="a" sx={{ textDecoration: 'none' }}>
-                <ListItemText
-                primary={t('abbout')}
-                primaryTypographyProps={{ sx: { color: 'primary.main' } }}
-                />
-            </ListItem>
-            </NextLink>
+                    <NextLink href="/about" passHref legacyBehavior>
+                        <motion.div
+                            variants={listItemVariants}
+                            whileHover="hover"
+                            whileTap="tap"
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <ListItem component="a" sx={{ textDecoration: 'none' }}>
+                                <ListItemText
+                                    primary={t('aboutnav')}
+                                    slotProps={{ primary: { sx: { color: theme.palette.text.primary } } }}
+                                />
+                            </ListItem>
+                        </motion.div>
+                    </NextLink>
 
-            <NextLink href="/projects" passHref legacyBehavior>
-            <ListItem component="a" sx={{ textDecoration: 'none' }}>
-                <ListItemText
-                primary={t('proje')}
-                primaryTypographyProps={{ sx: { color: 'primary.main' } }}
-                />
-            </ListItem>
-            </NextLink>
-        </Box>
-        </Drawer>
+                    <NextLink href="/projects" passHref legacyBehavior>
+                        <motion.div
+                            variants={listItemVariants}
+                            whileHover="hover"
+                            whileTap="tap"
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <ListItem component="a" sx={{ textDecoration: 'none' }}>
+                                <ListItemText
+                                    primary={t('projectsnav')}
+                                    slotProps={{ primary: { sx: { color: theme.palette.text.primary } } }}
+                                />
+                            </ListItem>
+                        </motion.div>
+                    </NextLink>
+                </motion.div>
+            </Drawer>
 
             <Modal
                 open={languageModalOpen}
@@ -188,26 +239,35 @@ const Header: React.FC = () => {
                                 <Typography variant="h6" sx={{ mb: 2, fontWeight: 'bold', color: theme.palette.text.primary }}>
                                     {t('selectLanguage', 'Dil Seçimi')}
                                 </Typography>
-                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                                    <Button
-                                        onClick={() => changeLanguage('tr')}
-                                        variant="outlined"
-                                        fullWidth
-                                        sx={{ textTransform: 'none', color: theme.palette.text.primary, borderColor: theme.palette.text.primary }}
-                                    >
-                                        <Box component="img" src="https://flagcdn.com/w40/tr.png" alt="Türk Bayrağı" sx={{ mr: 1 }} />
-                                        {t('turkish', 'Türkçe')}
-                                    </Button>
-                                    <Button
-                                        onClick={() => changeLanguage('en')}
-                                        variant="outlined"
-                                        fullWidth
-                                        sx={{ textTransform: 'none', color: theme.palette.text.primary, borderColor: theme.palette.text.primary }}
-                                    >
-                                        <Box component="img" src="https://flagcdn.com/w40/us.png" alt="ABD Bayrağı" sx={{ mr: 1 }} />
-                                        {t('english', 'English')}
-                                    </Button>
-                                </Box>
+                                <Select
+                                    value={i18n.language}
+                                    onChange={(e) => changeLanguage(e.target.value)}
+                                    fullWidth
+                                    sx={{ mb: 2 }}
+                                >
+                                    <MenuItem value="tr">
+                                        <Box display="flex" alignItems="center">
+                                            <Box
+                                                component="img"
+                                                src="https://flagcdn.com/w40/tr.png"
+                                                alt="Türk Bayrağı"
+                                                sx={{ mr: 1 }}
+                                            />
+                                            Türkçe
+                                        </Box>
+                                    </MenuItem>
+                                    <MenuItem value="en">
+                                        <Box display="flex" alignItems="center">
+                                            <Box
+                                                component="img"
+                                                src="https://flagcdn.com/w40/us.png"
+                                                alt="Yabancıların Bayrağı"
+                                                sx={{ mr: 1 }}
+                                            />
+                                            English
+                                        </Box>
+                                    </MenuItem>
+                                </Select>
                             </Box>
                         </motion.div>
                     )}
