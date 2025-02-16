@@ -261,7 +261,7 @@ const Header: React.FC = () => {
                                             <Box
                                                 component="img"
                                                 src="https://flagcdn.com/w40/us.png"
-                                                alt="Yabancıların Bayrağı"
+                                                alt="Ameriga Bayrağı"
                                                 sx={{ mr: 1 }}
                                             />
                                             English

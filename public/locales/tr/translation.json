@@ -22,6 +22,10 @@
         "notFound": "Proje bulunamadı.",
         "back": "Geri Dön"
     },
+    "404": {
+        "header_text": "Aradığınız sayfayı bulamadık, kaldırılmış olabilir.",
+        "subtitle_text": "10 saniye içinde ana sayfaya yönlendirileceksiniz."
+    },
     "welcome": "Hoş geldiniz, ben Espe",
     "homenav":"Ana sayfa",
     "projectsnav":"Projeler",

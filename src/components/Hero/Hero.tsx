@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
                 {t('hero.title', 'Welcome to My Portfolio')}
             </Typography>
             <Typography variant="h5" sx={heroStyles.subtitle}>
-                {t('hero.subtitle', 'I build creative and modern web experiences.')}
+                {t('hero.subtitle', 'Tayfur Furkan Hayat a.k.a. Espe, EspeeeBne, Sora, Rika')}
             </Typography>
             <Stack direction="row" spacing={2} sx={{ mt: 3, zIndex: 2 }}>
                 <NextLink href="/about" passHref legacyBehavior>

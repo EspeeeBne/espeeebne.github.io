@@ -4,6 +4,7 @@ import { ThemeProvider, CssBaseline, CircularProgress, Box } from '@mui/material
 import { getTheme } from '../config/theming';
 import { appWithTranslation } from 'next-i18next';
 import Head from 'next/head';
+import MetaTags from '../components/MetaTags/MetaTags';
 import '../config/i18n';
 
 import dynamic from 'next/dynamic';
@@ -48,6 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
+            <MetaTags />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <ThemeToggleContext.Provider value={{ darkMode: themeMode === 'dark', toggleTheme }}>

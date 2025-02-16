@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardActionArea, CardMedia, CardContent, Typography } from '@mui/material';
 import Link from 'next/link';
-import { projectCardStyles } from './ProjectCard.styles';
+import { projectCardStyles } from '../../styles/ProjectCard.styles';
 import { useTheme } from '@mui/material/styles';
 
 export interface Project {

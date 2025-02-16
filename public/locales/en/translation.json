@@ -21,6 +21,10 @@
         "notFound": "Project not found.",
         "back": "Go Back"
     },
+    "404": {
+        "header_text": "We could not find the page you are looking for, it may have been removed.",
+        "subtitle_text": "You will be redirected to the homepage in 10 seconds."
+    },
     "welcome": "Welcome, I'm Espe",
     "homenav":"Home",
     "home":"Home",

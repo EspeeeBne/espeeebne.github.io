@@ -2,12 +2,13 @@
   "name": "espe-porfolyo",
   "license": "MIT",
   "Author": "EspeeeBne",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "generate-metadata": "ts-node scripts/create-metadata-canvas.ts",
     "lint": "next lint"
   },
   "dependencies": {
@@ -16,11 +17,15 @@
     "@mui/icons-material": "^6.4.3",
     "@mui/material": "^6.4.3",
     "@mui/system": "^6.4.3",
+    "@tsparticles/engine": "^3.8.1",
+    "@tsparticles/react": "^3.0.0",
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
+    "canvas": "^3.1.0",
     "cra-template": "^1.2.0",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.4.1",
+    "fs": "^0.0.1-security",
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.2",
     "i18next-http-backend": "^3.0.2",
@@ -31,15 +36,19 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-helmet": "^6.1.0",
-    "react-i18next": "^15.4.0"
+    "react-i18next": "^15.4.0",
+    "react-tsparticles": "^2.12.2",
+    "tsparticles": "^3.8.1",
+    "url": "^0.11.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
+    "@types/node": "^20.17.19",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
