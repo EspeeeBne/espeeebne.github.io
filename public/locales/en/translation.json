@@ -22,9 +22,10 @@
         "back": "Go Back"
     },
     "welcome": "Welcome, I'm Espe",
+    "homenav":"Home",
     "home":"Home",
-    "proje":"Projects",
-    "abbout":"About",
+    "projectsnav":"Projects",
+    "aboutnav":"About",
     "description": "Tayfur Furkan Hayat a.k.a Espe, EspeeeBne, Sora, Rika",
     "contact": "Get in Touch",
     "aboutTitle": "About Me",
