@@ -22,7 +22,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 const theme = useTheme();
 
 return (
-        <Link href={`/projects/${project.slug}`} passHref>
+    <Link
+      href={`/projects/${project.slug}`}
+      passHref
+      legacyBehavior
+      >      
         <Card sx={projectCardStyles.card}>
             <CardActionArea>
     <CardMedia
