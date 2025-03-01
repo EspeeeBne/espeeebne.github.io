@@ -25,10 +25,10 @@ return (
         sx={notFoundStyles.image}
     />
     <Typography variant="h4" sx={notFoundStyles.header}>
-        {t('404.header', 'Aradığınız sayfa bulunamadı.')}
+        {t('404.header_text', 'Aradığınız sayfa bulunamadı.')}
     </Typography>
     <Typography variant="body1" sx={notFoundStyles.subtitle}>
-        {t('404.subtitle', '10 saniye içinde otomatik ana sayfaya gideceksiniz...')}
+        {t('404.subtitle_text', '10 saniye içinde otomatik ana sayfaya gideceksiniz...')}
     </Typography>
     </Box>
 );
