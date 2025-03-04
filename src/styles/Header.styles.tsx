@@ -3,6 +3,7 @@ import { SxProps, Theme } from '@mui/material/styles';
 export const headerStyles: { [key: string]: SxProps<Theme> } = {
     appBar: {
         backgroundColor: 'primary.main',
+        boxShadow: 5,
     },
     toolbar: {
         display: 'flex',

@@ -1,5 +1,5 @@
     import { createTheme } from '@mui/material/styles';
-    import themeOverrides from '../../../styles/theme-overrides';
+    import themeOverrides from '../theme-overrides';
 
     const baseTheme = createTheme({
     palette: {

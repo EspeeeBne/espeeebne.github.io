@@ -4,16 +4,17 @@ export const aboutStyles: { [key: string]: SxProps<Theme> } = {
 container: (theme: Theme) => ({
     padding: theme.spacing(4),
     backgroundColor: theme.palette.background.default,
-    minHeight: 'calc(100vh - 64px)',
-}),
+    minHeight: 'calc(70vh - 64px)',
+    marginTop: '64px',
+  }),
+
 header: (theme: Theme) => ({
     textAlign: 'center',
     marginBottom: theme.spacing(4),
     color: theme.palette.text.primary,
 }),
-       // eslintten nefret ediyorum kullanacak yer yoktu böyle olmalıydı sırıtmaması için cahil eslint 😡😡😡😡
-      //eslint-disable-next-line @typescript-eslint/no-unused-vars
-content: (theme: Theme) => ({
+// boşverdim estetikliği eslint kardeşimizin hata vermesinden önemli değil 😎😎😎😉😉😉
+content: () => ({
     maxWidth: '800px',
     margin: '0 auto',
     textAlign: 'center',

@@ -77,7 +77,7 @@ const Header: React.FC = () => {
             <AnimatePresence>
                 <motion.div initial="hidden" animate="visible" exit="hidden">
                     <AppBar
-                        position="static"
+                        position="fixed"
                         sx={{
                             ...headerStyles.appBar,
                             backgroundColor: theme.palette.background.default,

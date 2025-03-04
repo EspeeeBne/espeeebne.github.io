@@ -5,19 +5,19 @@ import Footer from '../Footer/Footer';
 import { layoutStyles } from '../../styles/Layout.styles';
 
 interface LayoutProps {
-children: ReactNode;
+    children: ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-return (
-    <Box sx={layoutStyles.container}>
-    <Header />
-    <Box component="main" sx={layoutStyles.main}>
-        {children}
-    </Box>
-    <Footer />
-    </Box>
-);
+    return (
+        <Box sx={layoutStyles.container}>
+            <Header />
+            <Box component="main" sx={layoutStyles.main}>
+                {children}
+            </Box>
+            <Footer />
+        </Box>
+    );
 };
 
 export default Layout;
