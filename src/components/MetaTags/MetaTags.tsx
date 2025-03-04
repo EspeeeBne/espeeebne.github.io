@@ -1,39 +1,45 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-export default function MetaTags({
-    title,
-    description,
-}: {
-    title?: string;
-    description?: string;
-}) {
-    const router = useRouter();
-    const pathname = router.asPath;
+interface MetaTagsProps {
+title?: string;
+description?: string;
+}
 
-    const getMetaImage = () => {
-        const match = pathname.match(/^\/projects\/([^/]+)\/?$/);
-        if (match) {
-            const slug = match[1];
-            return `https://espeeebne.github.io/static/projects/${slug}/metadata.png`;
-        }
-        return 'https://espeeebne.github.io/static/important-images/favicon.ico';
-    };
+export default function MetaTags({ title, description }: MetaTagsProps) {
+const router = useRouter();
+const { projectSlug } = router.query;
+const baseUrl = 'https://espeeebne.github.io';
+const pathname = router.asPath;
 
-    const metaImage = getMetaImage();
+const ogUrl = `${baseUrl}${pathname}`;
 
-    return (
-        <Head>
-            <title>{title || 'Espe Portfolio'}</title>
-            <meta name="description" content={description || 'Espe Portfolio - Kendim için yaptığım portfolyo sitesi.'} />
-            <meta property="og:title" content={title || 'Espe Portfolio'} />
-            <meta property="og:description" content={description || 'Espe Portfolio - Kendim için yaptığım portfolyo sitesi.'} />
-            <meta property="og:image" content={metaImage} />
-            <meta property="og:url" content={`https://espeeebne.github.io${pathname}`} />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content={title || 'Espe Portfolio'} />
-            <meta name="twitter:description" content={description || 'Espe Portfolio - Kendim için yaptığım portfolyo sitesi.'} />
-            <meta name="twitter:image" content={metaImage} />
-        </Head>
-    );
+const getMetaImage = () => {
+    if (projectSlug) {
+    return `${baseUrl}/static/projects/${projectSlug}/metadata.png`;
+    }
+    return `${baseUrl}/static/important-images/favicon.ico`;
+};
+
+const metaImage = getMetaImage();
+
+const metaTitle = title || 'Espe Portfolio';
+const metaDesc = description || 'Espe Portfolio - Kendim için yaptığım portfolyo sitesi.';
+
+return (
+    <Head>
+    <title>{metaTitle}</title>
+    <meta name="description" content={metaDesc} />
+
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDesc} />
+    <meta property="og:image" content={metaImage} />
+    <meta property="og:url" content={ogUrl} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={metaTitle} />
+    <meta name="twitter:description" content={metaDesc} />
+    <meta name="twitter:image" content={metaImage} />
+    </Head>
+);
 }
