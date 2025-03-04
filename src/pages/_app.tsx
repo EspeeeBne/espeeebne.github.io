@@ -5,6 +5,8 @@ import { getTheme } from '../config/theming';
 import { appWithTranslation } from 'next-i18next';
 import Head from 'next/head';
 import '../config/i18n';
+import MetaTags from '@/components/MetaTags/MetaTags';
+
 
 import dynamic from 'next/dynamic';
 const Layout = dynamic(() => import('../components/Layout/Layout'), {
@@ -51,6 +53,7 @@ const theme = getTheme(themeMode);
 return (
     <>
     <Head>
+    <MetaTags />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
 
