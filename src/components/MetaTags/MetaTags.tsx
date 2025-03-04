@@ -15,9 +15,9 @@ export default function MetaTags({
         const match = pathname.match(/^\/projects\/([^/]+)\/?$/);
         if (match) {
             const slug = match[1];
-            return `/static/projects/${slug}/metadata.png`;
+            return `https://espeeebne.github.io/static/projects/${slug}/metadata.png`;
         }
-        return '/static/important-images/favicon.ico';
+        return 'https://espeeebne.github.io/static/important-images/favicon.ico';
     };
 
     const metaImage = getMetaImage();

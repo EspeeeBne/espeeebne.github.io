@@ -2,7 +2,7 @@ import { SxProps, Theme } from '@mui/material/styles';
 
 export const projectDetailStyles: { [key: string]: SxProps<Theme> } = {
 container: (theme: Theme) => ({
-    marginTop: theme.spacing(4),
+    marginTop: '64px',
     color: theme.palette.text.primary,
     textTransform: 'none',
 }),

@@ -23,7 +23,7 @@ return (
         <title>{t('projects.title', 'Projelerim')}</title>
     </Head>
     <Container sx={{ mt: 4, mb: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom sx={{ color: theme.palette.text.primary }}>
+        <Typography variant="h4" component="h1" gutterBottom sx={{ color: theme.palette.text.primary,  marginTop: '64px',}}>
         {t('projects.title', 'Projelerim')}
         </Typography>
         <Box sx={timelineStyles.container(theme)}>

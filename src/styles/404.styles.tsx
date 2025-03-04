@@ -7,6 +7,7 @@ container: {
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
+    marginTop: '64px',
     textAlign: 'center',
     backgroundColor: (theme) => theme.palette.background.default,
 },
