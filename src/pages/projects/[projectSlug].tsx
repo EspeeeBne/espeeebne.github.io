@@ -29,7 +29,11 @@ const ProjectDetail: NextPage<ProjectDetailProps> = ({ project }) => {
 
     return (
         <>
-            <MetaTags title={`${project.name} - Espe`} description={project.description} />
+            <MetaTags
+                title={`${project.name} - Espe`}
+                description={project.description}
+            />
+
             <Container sx={projectDetailStyles.container}>
                 <Typography variant="h4" component="h1" gutterBottom sx={projectDetailStyles.title}>
                     {project.name}
@@ -38,7 +42,12 @@ const ProjectDetail: NextPage<ProjectDetailProps> = ({ project }) => {
                     {project.date}
                 </Typography>
                 <Box sx={projectDetailStyles.imageBox}>
-                    <Box component="img" src={project.imageUrl} alt={project.name} sx={projectDetailStyles.image} />
+                    <Box
+                        component="img"
+                        src={project.imageUrl}
+                        alt={project.name}
+                        sx={projectDetailStyles.image}
+                    />
                 </Box>
                 <Typography variant="body1" paragraph sx={projectDetailStyles.description}>
                     {project.description}
@@ -65,6 +74,5 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: { params: { projectSlug: string } }) {
     const project = projectsData.find((p) => p.slug === params.projectSlug);
-
     return { props: { project } };
 }
