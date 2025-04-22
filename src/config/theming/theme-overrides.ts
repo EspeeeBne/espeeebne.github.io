@@ -28,7 +28,7 @@ MuiTypography: {
 },
 
 // buradaki birkaç yer için scss ekleyebilirim aslında olurda başka bir sebepten ekleyip buradaki bazı kodları aktarmazsam bana github ya da mail üzerinden yazın
-
+//TODO: burayı direkt 0'dan yaz themeprovider'ı düzgün ekle
 MuiCssBaseline: {
     styleOverrides: {
     '*': {

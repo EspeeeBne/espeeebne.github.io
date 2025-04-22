@@ -9,8 +9,8 @@
         contrastText: '#ffffff',
         },
         background: {
-        default: '#121212',
-        paper: '#1e1e1e',
+        default: '#000000',
+        paper: '#121212',
         },
         error: {
         main: '#f44336',

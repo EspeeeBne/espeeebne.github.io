@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-// bu yer artık kullanılmıyor
+// bu yer tekrar kullanılabilir belki sanırım
 
 export default function MetaTags({
     title,
@@ -11,7 +11,7 @@ export default function MetaTags({
 }) {
     const router = useRouter();
     const pathname = router.asPath;
-// bu yer artık kullanılmıyor
+// bu yer tekrar kullanılabilir belki sanırım
 
     const getMetaImage = () => {
         const match = pathname.match(/^\/projects\/([^/]+)\/?$/);
@@ -21,10 +21,10 @@ export default function MetaTags({
         }
         return 'http://localhost:3000/static/important-images/favicon.ico';
     };
-// bu yer artık kullanılmıyor
+// bu yer tekrar kullanılabilir belki sanırım
 
     const metaImage = getMetaImage();
-// bu yer artık kullanılmıyor
+// bu yer tekrar kullanılabilir belki sanırım
     return (
         <Head>
             <title>{title || 'Espe Portfolio'}</title>

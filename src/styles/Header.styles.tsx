@@ -1,31 +1,39 @@
-import { SxProps, Theme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
-export const headerStyles: { [key: string]: SxProps<Theme> } = {
-    appBar: {
-        backgroundColor: 'primary.main',
-        boxShadow: 5,
-    },
-    toolbar: {
-        display: 'flex',
-        justifyContent: 'space-between',
-    },
-    menuButton: {
-        mr: 2,
-    },
-    title: {
-        flexGrow: 1,
-        fontWeight: 600,
-        fontSize: '1.5rem',
-        a: {
-            color: 'inherit',
-            textDecoration: 'none',
-        },
-    },
-    buttonsContainer: {
-        display: 'flex',
-        alignItems: 'center',
-    },
-    iconButton: {
-        ml: 1,
-    },
-};
+export const StyledAppBar = styled(AppBar)(({ theme }) => ({
+backgroundColor: theme.palette.background.default,
+boxShadow: theme.shadows[5],
+}));
+
+export const StyledToolbar = styled(Toolbar)({
+display: 'flex',
+justifyContent: 'space-between',
+});
+
+export const StyledMenuButton = styled(IconButton)(({ theme }) => ({
+marginRight: theme.spacing(2),
+}));
+
+export const StyledTitle = styled(Typography)(() => ({
+flexGrow: 1,
+fontWeight: 600,
+fontSize: '1.5rem',
+'& a': {
+    color: 'inherit',
+    textDecoration: 'none',
+},
+}));
+
+export const ButtonsContainer = styled(Box)({
+display: 'flex',
+alignItems: 'center',
+});
+
+export const StyledIconButton = styled(IconButton)(({ theme }) => ({
+marginLeft: theme.spacing(1),
+}));

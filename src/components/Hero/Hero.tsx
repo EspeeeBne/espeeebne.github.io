@@ -1,12 +1,30 @@
-import React from 'react';
-import { Box, Typography, Button, Stack } from '@mui/material';
+import { FC } from 'react';
+import { Box, Typography, Button, Stack, Skeleton } from '@mui/material';
 import { heroStyles } from '../../styles/Hero.styles';
 import { useTranslation } from 'react-i18next';
 import NextLink from 'next/link';
 import { motion } from 'framer-motion';
 
-const Hero: React.FC = () => {
-    const { t } = useTranslation();
+const Hero: FC = () => {
+    const { t, ready } = useTranslation();
+    if (!ready) {
+        return (
+            <Box
+                component={motion.div}
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+                sx={heroStyles.container}
+            >
+                <Skeleton variant="text" width="60%" height={64} />
+                <Skeleton variant="text" width="40%" height={40} />
+                <Stack direction="row" spacing={2} sx={{ mt: 3, zIndex: 2 }}>
+                    <Skeleton variant="rectangular" width={120} height={48} />
+                    <Skeleton variant="rectangular" width={120} height={48} />
+                </Stack>
+            </Box>
+        );
+    }
 
     return (
         <Box
