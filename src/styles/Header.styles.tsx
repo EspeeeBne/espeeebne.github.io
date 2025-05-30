@@ -6,8 +6,15 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 export const StyledAppBar = styled(AppBar)(({ theme }) => ({
-backgroundColor: theme.palette.background.default,
+backgroundColor: theme.palette.background.level1,
+color: theme.palette.text.primary,
 boxShadow: theme.shadows[5],
+borderBottom: theme.palette.mode === 'dark'
+? `1px solid ${theme.palette.divider}`
+: 'none',
+[theme.breakpoints.down('sm')]: {
+borderBottom: 'none',
+},
 }));
 
 export const StyledToolbar = styled(Toolbar)({

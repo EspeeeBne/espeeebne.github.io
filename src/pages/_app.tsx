@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import { useState, useEffect, createContext } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 import { ThemeProvider, CssBaseline, CircularProgress, Box } from '@mui/material';
 import { getTheme } from '../config/theming';
 import { appWithTranslation } from 'next-i18next';
@@ -9,64 +9,72 @@ import MetaTags from '@/components/MetaTags/MetaTags';
 
 
 import dynamic from 'next/dynamic';
+import SettingsContext, { SettingsProvider } from '../contexts/SettingsContext';
+
+export const ThemeToggleContext = createContext<{
+  darkMode: boolean;
+  toggleTheme: () => void;
+}>({
+  darkMode: true,
+  toggleTheme: () => {},
+});
+
 const Layout = dynamic(() => import('../components/Layout/Layout'), {
-loading: () => (
+  loading: () => (
     <Box
-    sx={{
+      sx={{
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh',
-    }}
+      }}
     >
-    <CircularProgress />
+      <CircularProgress />
     </Box>
-),
+  ),
 });
 
-export const ThemeToggleContext = createContext<{
-darkMode: boolean;
-toggleTheme: () => void;
-}>({
-darkMode: true,
-toggleTheme: () => {},
-});
+function AppContent({ Component, pageProps }: AppProps) {
+  const { settings, setTheme } = useContext(SettingsContext);
+  const [mounted, setMounted] = useState(false);
 
-function MyApp({ Component, pageProps }: AppProps) {
-const [themeMode, setThemeMode] = useState<'light' | 'dark'>('dark');
-const [mounted, setMounted] = useState(false);
-
-useEffect(() => {
+  useEffect(() => {
     setMounted(true);
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setThemeMode(prefersDark ? 'dark' : 'light');
-}, []);
+  }, []);
 
-if (!mounted) return null;
+  if (!mounted) return null;
 
-const toggleTheme = () => {
-    setThemeMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
-};
+  const toggleTheme = () => {
+    setTheme(settings.theme === 'dark' ? 'light' : 'dark');
+  };
 
-const theme = getTheme(themeMode);
+  const theme = getTheme(settings.theme);
 
-return (
+  return (
     <>
-    <Head>
-    <MetaTags />
+      <Head>
+        <MetaTags />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </Head>
+      </Head>
 
-    <ThemeToggleContext.Provider value={{ darkMode: themeMode === 'dark', toggleTheme }}>
+      <ThemeToggleContext.Provider value={{ darkMode: settings.theme === 'dark', toggleTheme }}>
         <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Layout>
+          <CssBaseline />
+          <Layout>
             <Component {...pageProps} />
-        </Layout>
+          </Layout>
         </ThemeProvider>
-    </ThemeToggleContext.Provider>
+      </ThemeToggleContext.Provider>
     </>
-);
+  );
+}
+
+function MyApp(props: AppProps) {
+  return (
+    <SettingsProvider>
+      <AppContent {...props} />
+    </SettingsProvider>
+  );
 }
 
 export default appWithTranslation(MyApp);

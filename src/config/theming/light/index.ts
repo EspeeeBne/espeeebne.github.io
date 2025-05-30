@@ -4,14 +4,18 @@
     const baseTheme = createTheme({
     palette: {
         mode: 'light',
+        contrastThreshold: 3,
         primary: {
         main: "#7077F9",
         contrastText: '#000000',
         },
-        background: {
-        default: '#ffffff',
-        paper: '#f5f5f5',
-        },
+    background: {
+    default: "#FFFFFF",
+    level1: "#FAFAFA",
+    level2: "#bfbcae",
+    level3: "#E2DFD2",
+    paper: "#ECECEC",
+    },
         error: {
         main: '#f44336',
         },

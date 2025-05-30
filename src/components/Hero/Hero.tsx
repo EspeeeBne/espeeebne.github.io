@@ -1,59 +1,63 @@
 import { FC } from 'react';
-import { Box, Typography, Button, Stack, Skeleton } from '@mui/material';
-import { heroStyles } from '../../styles/Hero.styles';
 import { useTranslation } from 'react-i18next';
 import NextLink from 'next/link';
-import { motion } from 'framer-motion';
+import {
+Container,
+Title,
+Subtitle,
+HeroStack,
+HeroButton,
+HeroSkeleton
+} from '../../styles/Hero.styles';
 
 const Hero: FC = () => {
-    const { t, ready } = useTranslation();
-    if (!ready) {
-        return (
-            <Box
-                component={motion.div}
-                initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-                sx={heroStyles.container}
-            >
-                <Skeleton variant="text" width="60%" height={64} />
-                <Skeleton variant="text" width="40%" height={40} />
-                <Stack direction="row" spacing={2} sx={{ mt: 3, zIndex: 2 }}>
-                    <Skeleton variant="rectangular" width={120} height={48} />
-                    <Skeleton variant="rectangular" width={120} height={48} />
-                </Stack>
-            </Box>
-        );
-    }
+const { t, ready } = useTranslation();
 
+const animProps = {
+    initial: { opacity: 0, y: -50 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 1 }
+};
+
+if (!ready) {
     return (
-        <Box
-            component={motion.div}
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            sx={heroStyles.container}
-        >
-            <Typography variant="h2" sx={heroStyles.title}>
-                {t('hero.title', 'Welcome to My Portfolio')}
-            </Typography>
-            <Typography variant="h5" sx={heroStyles.subtitle}>
-                {t('hero.subtitle', 'Tayfur Furkan Hayat a.k.a. Espe, EspeeeBne, Sora, Rika')}
-            </Typography>
-            <Stack direction="row" spacing={2} sx={{ mt: 3, zIndex: 2 }}>
-                <NextLink href="/about" passHref legacyBehavior>
-                    <Button variant="contained" color="primary" sx={{ textTransform: 'none' }}>
-                        {t('hero.about', 'Hakkımda')}
-                    </Button>
-                </NextLink>
-                <NextLink href="/projects" passHref legacyBehavior>
-                    <Button variant="contained" color="primary" sx={{ textTransform: 'none' }}>
-                        {t('hero.projects', 'Projelerim')}
-                    </Button>
-                </NextLink>
-            </Stack>
-        </Box>
+    <Container {...animProps}>
+        <HeroSkeleton.line variant="text" width="60%" height={64} />
+        <HeroSkeleton.line variant="text" width="40%" height={40} />
+        <HeroStack>
+        <HeroSkeleton.rect variant="rectangular" width={120} height={48} />
+        <HeroSkeleton.rect variant="rectangular" width={120} height={48} />
+        </HeroStack>
+    </Container>
     );
+}
+
+return (
+    <Container {...animProps}>
+    <Title variant="h2">
+        {t('hero.title', 'Welcome to My Portfolio')}
+    </Title>
+    <Subtitle variant="h5">
+        {t(
+        'hero.subtitle',
+        'Tayfur Furkan Hayat a.k.a. Espe, EspeeeBne, Sora, Rika'
+        )}
+    </Subtitle>
+
+    <HeroStack>
+        <NextLink href="/about" passHref legacyBehavior>
+        <HeroButton variant="outlined">
+            {t('hero.about', 'Hakkımda')}
+        </HeroButton>
+        </NextLink>
+        <NextLink href="/projects" passHref legacyBehavior>
+        <HeroButton variant="outlined">
+            {t('hero.projects', 'Projelerim')}
+        </HeroButton>
+        </NextLink>
+    </HeroStack>
+    </Container>
+);
 };
 
 export default Hero;

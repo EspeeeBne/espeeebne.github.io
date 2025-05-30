@@ -237,6 +237,13 @@ const projectsData: Project[] = [
         "date": "2024-11-22",
         "slug": "XOX-Oyunu-C-WinForms",
         "imageUrl": "/static/projects/XOX-Oyunu-C-WinForms/logo.png"
+    },
+        {
+        "name": "mp3 başına numara koyma ve numara silme",
+        "description": "Merhaba! Bu projeyi, babam uzun yola çıkarsak şarjınız boşa gitmesin al bu usb'yi at bütün müzikleri dedi. Dediğini yaptım yapmasına da babam azar çekti uzun bir bana müzikleri numaralandırmamı istedi baktım hem babamın eski müziklerde hem de toplu mp3 indirme sitelerinden aldığım müziklerde numara var bunları silmek gerek dedim çok üşendim hem silip hem tekrar 0'dan numaralandırmaya sonra bunu araştırırken insanların cidden böyle bir şeye ihtiyacı olduğunu fark ettim ondan dolayı ben bunu kodlayıp github atayım dedim herkes kolayca kullanabilsin diye de direkt js kullandım kurulumu ve kullannımı çok kolay normal kullanıcı için.",
+        "date": "2025-05-30",
+        "slug": "mp3basinanumarakoymavesilme",
+        "imageUrl": "/static/projects/mp3basinanumarakoymavesilme/logo.png"
     }
 ];
 

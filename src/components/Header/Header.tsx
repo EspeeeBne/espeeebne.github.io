@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import NextLink from 'next/link';
 import {
 Box,
@@ -22,6 +22,7 @@ import { useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
+import SettingsContext from "../../contexts/SettingsContext";
 
 import {
 StyledAppBar,
@@ -34,13 +35,14 @@ StyledIconButton,
 
 import { ThemeToggleContext } from '../../pages/_app';
 
-const Header: React.FC = () => {
+const Header: FC = () => {
 const theme = useTheme();
+const { settings } = useContext(SettingsContext);
 const { t, i18n } = useTranslation();
 const router = useRouter();
 const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 const { darkMode, toggleTheme } = useContext(ThemeToggleContext);
-
+const isDark = settings.theme === 'dark';
 const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 const [languageModalOpen, setLanguageModalOpen] = useState(false);
 
@@ -83,11 +85,8 @@ return (
     <AnimatePresence>
         <motion.div initial="hidden" animate="visible" exit="hidden">
         <StyledAppBar
+            elevation={isDark ? 0 : 4}
             position="fixed"
-            sx={{
-            backgroundColor: theme.palette.background.default,
-            color: theme.palette.text.primary,
-            }}
         >
             <StyledToolbar>
             <StyledMenuButton
@@ -165,7 +164,7 @@ return (
                 variants={listItemVariants}
                 whileHover="hover"
                 whileTap="tap"
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: 'pointer', borderRadius:16, }}
             >
                 <ListItem component="a" sx={{ textDecoration: 'none' }}>
                 <ListItemText

@@ -2,7 +2,7 @@ import { SxProps, Theme } from '@mui/material/styles';
 
 export const footerStyles: { [key: string]: SxProps<Theme> } = {
 container: (theme: Theme) => ({
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.level1,
     color: theme.palette.text.primary,
     display: 'flex',
     flexDirection: 'column',
