@@ -29,7 +29,8 @@ class MyDocument extends Document {
         return (
             <Html lang="tr">
                 <Head>
-                    <meta name="description" content="Espe Portfolio - Kendim için yaptığım portfolyo sitesi." />
+                    // burası statik çalışıyor components içindeki dinamik ondan burası not oldu
+                    /*<meta name="description" content="Espe Portfolio - Kendim için yaptığım portfolyo sitesi." />
                     <meta property="og:title" content="Espe Portfolio" />
                     <meta
                         property="og:description"
@@ -44,7 +45,7 @@ class MyDocument extends Document {
                         content="Espe Portfolio - Kendim için yaptığım portfolyo sitesi."
                     />
                     <meta name="twitter:image" content={metaImage} />
-                    <meta charSet="utf-8" />
+                    <meta charSet="utf-8" />*/
                     <link rel="icon" href="/static/important-images/favicon.ico" />
                 </Head>
                 <body>
