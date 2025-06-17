@@ -5,7 +5,7 @@
     },
     "hero": {
         "title": "Welcome to my Portfolio",
-        "subtitle": "Tayfur Furkan Hayat a.k.a. Espe, EspeeeBne, Sora, Rika",
+        "subtitle": "Tayfur Furkan Hayat a.k.a. Espe, EspeeeBne",
         "button": "Learn More",
         "projects":"Projects",
         "about":"About Me"
@@ -30,7 +30,7 @@
     "home":"Home",
     "projectsnav":"Projects",
     "aboutnav":"About",
-    "description": "Tayfur Furkan Hayat a.k.a Espe, EspeeeBne, Sora, Rika",
+    "description": "Tayfur Furkan Hayat a.k.a Espe, EspeeeBne",
     "contact": "Get in Touch",
     "aboutTitle": "About Me",
     "projectsTitle": "My Projects",
