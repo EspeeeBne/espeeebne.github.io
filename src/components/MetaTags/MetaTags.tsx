@@ -37,6 +37,7 @@ export default function MetaTags({
             <meta name="twitter:title" content={title || 'Espe Portfolio'} />
             <meta name="twitter:description" content={description || 'Espe Portfolio - Kendim için yaptığım portfolyo sitesi.'} />
             <meta name="twitter:image" content={metaImage} />
+            <meta charSet="utf-8" />
         </Head>
     );
 }
