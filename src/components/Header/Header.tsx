@@ -2,7 +2,7 @@ import React, { FC, useContext, useState } from 'react';
 import NextLink from 'next/link';
 import {
 Box,
-Drawer,
+SwipeableDrawer,
 ListItem,
 ListItemText,
 Modal,
@@ -45,6 +45,10 @@ const { darkMode, toggleTheme } = useContext(ThemeToggleContext);
 const isDark = settings.theme === 'dark';
 const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 const [languageModalOpen, setLanguageModalOpen] = useState(false);
+
+const iOS =
+    typeof navigator !== 'undefined' &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 const toggleDrawer = () => setIsDrawerOpen(prev => !prev);
 const openLanguageModal = () => setLanguageModalOpen(true);
@@ -142,7 +146,14 @@ return (
         </motion.div>
     </AnimatePresence>
 
-    <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>
+        <SwipeableDrawer
+        anchor="left"
+        open={isDrawerOpen}
+        onClose={toggleDrawer}
+        onOpen={toggleDrawer}
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
+        >
         <motion.div
         variants={sidebarVariants}
         initial="closed"
@@ -176,7 +187,7 @@ return (
             </NextLink>
         ))}
         </motion.div>
-    </Drawer>
+    </SwipeableDrawer>
 
     <Modal
         open={languageModalOpen}
