@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { Skeleton, Stack } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+import { easeOut } from 'framer-motion'
 import {
 AboutContainer,
 Title,
@@ -18,9 +19,21 @@ visible: { transition: { staggerChildren: 0.2 } },
 };
 
 const itemVariants = {
-hidden: { opacity: 0, y: 20 },
-visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-};
+hidden:
+{
+    opacity: 0,
+    y: 20
+},
+visible:
+{
+    opacity: 1,
+    y: 0,
+    transition: {
+    duration: 0.6,
+    ease: easeOut
+    }
+}
+}
 
 const About: NextPage = () => {
 const { t, ready } = useTranslation();

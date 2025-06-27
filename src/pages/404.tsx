@@ -20,7 +20,7 @@ hidden: { y: -30, opacity: 0 },
 visible: {
     y: 0,
     opacity: 1,
-    transition: { type: 'spring', stiffness: 120, damping: 12, delay: 0.4 },
+    transition: { type: "spring" as const, stiffness: 120, damping: 12, delay: 0.4 },
 },
 };
 
