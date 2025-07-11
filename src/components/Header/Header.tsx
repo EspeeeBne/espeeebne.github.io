@@ -14,8 +14,8 @@ MenuItem,
 Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import WbSunnyIcon from '@mui/icons-material/WbSunny';
-import NightlightIcon from '@mui/icons-material/Nightlight';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import TranslateIcon from '@mui/icons-material/Translate';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTheme } from '@mui/material/styles';
@@ -66,7 +66,7 @@ const changeLanguage = async (lang: string) => {
     }
 };
 
-const ThemeIcon = darkMode ? WbSunnyIcon : NightlightIcon;
+const ThemeIcon = darkMode ? DarkModeIcon : LightModeIcon;
 
 const modalVariants = {
     hidden: { opacity: 0, scale: 0.8 },
