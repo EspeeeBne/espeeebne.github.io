@@ -66,7 +66,7 @@ const changeLanguage = async (lang: string) => {
     }
 };
 
-const ThemeIcon = darkMode ? DarkModeIcon : LightModeIcon;
+const ThemeIcon = darkMode ? LightModeIcon : DarkModeIcon;
 
 const modalVariants = {
     hidden: { opacity: 0, scale: 0.8 },
