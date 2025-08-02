@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Head from 'next/head';
 import { Typography, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
@@ -6,7 +7,6 @@ import ProjectCard from '../../components/ProjectCard/ProjectCard';
 import projectsData from '../../data/projectsData';
 import { parseISO, compareAsc, format, formatDistanceToNow } from 'date-fns';
 import { tr, enUS } from 'date-fns/locale';
-import MetaTags from '../../components/MetaTags/MetaTags';
 import {
   TimelineContainer,
   TimelineLine,
@@ -51,13 +51,13 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { 
-    opacity: 0, 
+  hidden: {
+    opacity: 0,
     y: 20,
     scale: 0.95
   },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     scale: 1,
     transition: {
@@ -69,10 +69,18 @@ const itemVariants = {
 
 return (
     <>
-    <MetaTags 
-        title={t('projects.title', 'Projelerim')}
-        description="Espe Portfolio - Projelerim sayfası. Geliştirdiğim projeleri inceleyebilirsiniz."
-    />
+    <Head>
+        <title>{t('projects.title', 'Projelerim')}</title>
+        <meta name="description" content="Espe Portfolio - Projelerim sayfası. Geliştirdiğim projeleri inceleyebilirsiniz." />
+        <meta property="og:title" content={t('projects.title', 'Projelerim')} />
+        <meta property="og:description" content="Espe Portfolio - Projelerim sayfası. Geliştirdiğim projeleri inceleyebilirsiniz." />
+        <meta property="og:image" content="https://espeeebne.github.io/static/important-images/favicon.ico" />
+        <meta property="og:url" content="https://espeeebne.github.io/projects" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t('projects.title', 'Projelerim')} />
+        <meta name="twitter:description" content="Espe Portfolio - Projelerim sayfası. Geliştirdiğim projeleri inceleyebilirsiniz." />
+        <meta name="twitter:image" content="https://espeeebne.github.io/static/important-images/favicon.ico" />
+    </Head>
     <TimelineContainer>
         <Typography variant="h4" component="h1" gutterBottom sx={{ color: theme.palette.text.primary,  marginTop: '64px',}}>
         {t('projects.title', 'Projelerim')}
@@ -88,9 +96,9 @@ return (
               const TimelineItem = isLeft ? MotionTimelineItem : MotionTimelineItemRight;
               const relativeDate = getRelativeDate(project.date);
               const fullDate = getFullDate(project.date);
-              
+
               return (
-                  <TimelineItem 
+                  <TimelineItem
                     key={project.slug}
                     variants={itemVariants}
                   >

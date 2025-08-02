@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import NextLink from 'next/link';
 import { parseISO, format, formatDistanceToNow } from 'date-fns';
 import { tr, enUS } from 'date-fns/locale';
+import Head from 'next/head';
 import projectsData from '../../data/projectsData';
-import MetaTags from '../../components/MetaTags/MetaTags';
 import {
   ProjectDetailContainer,
   ProjectDetailTitle,
@@ -56,10 +56,18 @@ const ProjectDetail: NextPage<ProjectDetailProps> = ({ project, meta }) => {
 
     return (
         <>
-            <MetaTags
-                title={meta?.title || `${project.name} - Espe`}
-                description={meta?.description || project.description}
-            />
+            <Head>
+                <title>{meta?.title || `${project.name} - Espe`}</title>
+                <meta name="description" content={meta?.description || project.description} />
+                <meta property="og:title" content={meta?.title || `${project.name} - Espe`} />
+                <meta property="og:description" content={meta?.description || project.description} />
+                <meta property="og:image" content={meta?.image || `https://espeeebne.github.io/static/projects/${project.slug}/metadata.png`} />
+                <meta property="og:url" content={meta?.url || `https://espeeebne.github.io/projects/${project.slug}`} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={meta?.title || `${project.name} - Espe`} />
+                <meta name="twitter:description" content={meta?.description || project.description} />
+                <meta name="twitter:image" content={meta?.image || `https://espeeebne.github.io/static/projects/${project.slug}/metadata.png`} />
+            </Head>
 
             <ProjectDetailContainer>
                 <ProjectDetailTitle variant="h4" gutterBottom>

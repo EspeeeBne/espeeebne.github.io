@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Head from 'next/head';
 import { Skeleton, Stack } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
@@ -10,7 +11,6 @@ Tagline,
 Description,
 EmailLink,
 } from '../../styles/about.styles';
-import MetaTags from '../../components/MetaTags/MetaTags';
 
 const containerVariants = {
 hidden: {},
@@ -46,10 +46,18 @@ if (!ready || loading) {
 
 return (
     <>
-    <MetaTags 
-        title={t('about.pageTitle', 'Hakkımda')}
-        description="Espe Portfolio - Hakkımda sayfası. Tayfur Furkan Hayat - Software Engineer"
-    />
+    <Head>
+        <title>{t('about.pageTitle', 'Hakkımda')}</title>
+        <meta name="description" content="Espe Portfolio - Hakkımda sayfası. Tayfur Furkan Hayat - Software Engineer" />
+        <meta property="og:title" content={t('about.pageTitle', 'Hakkımda')} />
+        <meta property="og:description" content="Espe Portfolio - Hakkımda sayfası. Tayfur Furkan Hayat - Software Engineer" />
+        <meta property="og:image" content="https://espeeebne.github.io/static/important-images/favicon.ico" />
+        <meta property="og:url" content="https://espeeebne.github.io/about" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t('about.pageTitle', 'Hakkımda')} />
+        <meta name="twitter:description" content="Espe Portfolio - Hakkımda sayfası. Tayfur Furkan Hayat - Software Engineer" />
+        <meta name="twitter:image" content="https://espeeebne.github.io/static/important-images/favicon.ico" />
+    </Head>
 
     <AboutContainer
         initial="hidden"
