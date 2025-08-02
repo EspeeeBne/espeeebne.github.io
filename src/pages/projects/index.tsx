@@ -1,57 +1,111 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
-import { Container, Typography, Box, useTheme } from '@mui/material';
+import { Typography, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 import ProjectCard from '../../components/ProjectCard/ProjectCard';
 import projectsData from '../../data/projectsData';
-import { parseISO, compareAsc, format } from 'date-fns';
-import { timelineStyles } from '../../styles/projects.styles';
+import { parseISO, compareAsc, format, formatDistanceToNow } from 'date-fns';
+import { tr, enUS } from 'date-fns/locale';
+import MetaTags from '../../components/MetaTags/MetaTags';
+import {
+  TimelineContainer,
+  TimelineLine,
+  TimelineItemLeft,
+  TimelineItemRight,
+  TimelineMarker,
+  TimelineDateLabel,
+  TimelineContent
+} from '../../styles/projects.styles';
+
+const MotionTimelineItem = motion(TimelineItemLeft);
+const MotionTimelineItemRight = motion(TimelineItemRight);
 
 const Projects: NextPage = () => {
-const { t } = useTranslation();
+const { t, i18n } = useTranslation();
 const theme = useTheme();
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const SxProps = theme.breakpoints.values;
 
 const sortedProjects = [...projectsData].sort((a, b) =>
     compareAsc(parseISO(a.date), parseISO(b.date))
 );
 
+const getRelativeDate = (dateString: string) => {
+  const date = parseISO(dateString);
+  const locale = i18n.language === 'tr' ? tr : enUS;
+  return formatDistanceToNow(date, { addSuffix: true, locale });
+};
+
+const getFullDate = (dateString: string) => {
+  const date = parseISO(dateString);
+  const locale = i18n.language === 'tr' ? tr : enUS;
+  return format(date, 'dd MMM yyyy', { locale });
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 20,
+    scale: 0.95
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
 return (
     <>
-    <Head>
-        <title>{t('projects.title', 'Projelerim')}</title>
-    </Head>
-    <Container sx={{ mt: 4, mb: 4 }}>
+    <MetaTags 
+        title={t('projects.title', 'Projelerim')}
+        description="Espe Portfolio - Projelerim sayfası. Geliştirdiğim projeleri inceleyebilirsiniz."
+    />
+    <TimelineContainer>
         <Typography variant="h4" component="h1" gutterBottom sx={{ color: theme.palette.text.primary,  marginTop: '64px',}}>
         {t('projects.title', 'Projelerim')}
         </Typography>
-        <Box sx={timelineStyles.container(theme)}>
-        <Box sx={timelineStyles.timelineLine(theme)} />
-        {sortedProjects.map((project, index) => {
-            const isLeft = index % 2 === 0;
-            return (
-<Box
-key={project.slug}
-sx={{
-    ...(timelineStyles.timelineItem(theme) as typeof SxProps),
-    ...(isLeft ? timelineStyles.timelineItemLeft(theme) : timelineStyles.timelineItemRight(theme)),
-}}
->
-
-
-                <Box sx={timelineStyles.marker(theme)} />
-                <Typography sx={timelineStyles.dateLabel(theme)}>
-                {format(parseISO(project.date), 'dd MMM yyyy')}
-                </Typography>
-                <Box sx={timelineStyles.content(theme)}>
-                <ProjectCard project={project} />
-                </Box>
-            </Box>
-            );
-        })}
-        </Box>
-    </Container>
+        <TimelineLine />
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {sortedProjects.map((project, index) => {
+              const isLeft = index % 2 === 0;
+              const TimelineItem = isLeft ? MotionTimelineItem : MotionTimelineItemRight;
+              const relativeDate = getRelativeDate(project.date);
+              const fullDate = getFullDate(project.date);
+              
+              return (
+                  <TimelineItem 
+                    key={project.slug}
+                    variants={itemVariants}
+                  >
+                      <TimelineMarker />
+                      <TimelineDateLabel title={fullDate}>
+                      {relativeDate}
+                      </TimelineDateLabel>
+                      <TimelineContent>
+                      <ProjectCard project={project} />
+                      </TimelineContent>
+                  </TimelineItem>
+              );
+          })}
+        </motion.div>
+    </TimelineContainer>
     </>
 );
 };

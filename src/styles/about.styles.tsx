@@ -24,20 +24,6 @@ export const Title = styled(MotionTypography)(({ theme }) => ({
   fontWeight: 700,
   position: 'relative',
   cursor: 'default',
-  '&:after': {
-    content: "''",
-    position: 'absolute',
-    left: '50%',
-    bottom: -theme.spacing(1),
-    width: 0,
-    height: 3,
-    background: theme.palette.primary.main,
-    transition: 'width .4s ease, left .4s ease',
-  },
-  '&:hover:after': {
-    width: '60%',
-    left: '20%',
-  },
 }));
 
 export const Name = styled(MotionTypography)(({ theme }) => ({

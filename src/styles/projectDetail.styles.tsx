@@ -1,36 +1,33 @@
-import { SxProps, Theme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import { Container, Typography, Box, Button } from '@mui/material';
 
-export const projectDetailStyles: { [key: string]: SxProps<Theme> } = {
-container: (theme: Theme) => ({
-    marginTop: '64px',
-    color: theme.palette.text.primary,
-    textTransform: 'none',
-}),
-title: (theme: Theme) => ({
-    color: theme.palette.text.primary,
-    textTransform: 'none',
-}),
-subtitle: (theme: Theme) => ({
-    color: theme.palette.text.secondary,
-    textTransform: 'none',
-}),
-imageBox: (theme: Theme) => ({
-    my: theme.spacing(3),
-}),
-image: (theme: Theme) => ({
-    maxWidth: '100%',
-    height: 300,
-    objectFit: 'cover',
-    borderRadius: theme.shape.borderRadius,
-    textTransform: 'none',
-}),
-description: (theme: Theme) => ({
-    color: theme.palette.text.primary,
-    textTransform: 'none',
-}),
-backButton: (theme: Theme) => ({
-    textTransform: 'none',
-    borderColor: theme.palette.primary.main,
-    color: theme.palette.primary.main,
-}),
-};
+export const ProjectDetailContainer = styled(Container)(({ theme }) => ({
+  marginTop: '64px',
+  color: theme.palette.text.primary,
+  textTransform: 'none',
+}));
+
+export const ProjectDetailTitle = styled(Typography)(({ theme }) => ({
+  color: theme.palette.text.primary,
+  textTransform: 'none',
+}));
+
+export const ProjectDetailSubtitle = styled(Typography)(({ theme }) => ({
+  color: theme.palette.text.secondary,
+  textTransform: 'none',
+}));
+
+export const ProjectDetailImageBox = styled(Box)(({ theme }) => ({
+  margin: `${theme.spacing(3)} 0`,
+}));
+
+export const ProjectDetailDescription = styled(Typography)(({ theme }) => ({
+  color: theme.palette.text.primary,
+  textTransform: 'none',
+}));
+
+export const ProjectDetailBackButton = styled(Button)(({ theme }) => ({
+  textTransform: 'none',
+  borderColor: theme.palette.primary.main,
+  color: theme.palette.primary.main,
+}));

@@ -1,5 +1,4 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
 import { Skeleton, Stack } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
@@ -11,6 +10,7 @@ Tagline,
 Description,
 EmailLink,
 } from '../../styles/about.styles';
+import MetaTags from '../../components/MetaTags/MetaTags';
 
 const containerVariants = {
 hidden: {},
@@ -46,9 +46,10 @@ if (!ready || loading) {
 
 return (
     <>
-    <Head>
-        <title>{t('about.pageTitle', 'Hakkımda')}</title>
-    </Head>
+    <MetaTags 
+        title={t('about.pageTitle', 'Hakkımda')}
+        description="Espe Portfolio - Hakkımda sayfası. Tayfur Furkan Hayat - Software Engineer"
+    />
 
     <AboutContainer
         initial="hidden"

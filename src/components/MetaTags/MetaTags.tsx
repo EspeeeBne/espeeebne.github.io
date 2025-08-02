@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-// bu yer tekrar kullanılabilir belki sanırım
 
 export default function MetaTags({
     title,
@@ -11,20 +10,17 @@ export default function MetaTags({
 }) {
     const router = useRouter();
     const pathname = router.asPath;
-// bu yer tekrar kullanılabilir belki sanırım
 
     const getMetaImage = () => {
         const match = pathname.match(/^\/projects\/([^/]+)\/?$/);
         if (match) {
             const slug = match[1];
-            return `http://localhost:3000//static/projects/${slug}/metadata.png`;
+            return `https://espeeebne.github.io/static/projects/${slug}/metadata.png`;
         }
-        return 'http://localhost:3000/static/important-images/favicon.ico';
+        return 'https://espeeebne.github.io/static/important-images/favicon.ico';
     };
-// bu yer tekrar kullanılabilir belki sanırım
 
     const metaImage = getMetaImage();
-// bu yer tekrar kullanılabilir belki sanırım
     return (
         <Head>
             <title>{title || 'Espe Portfolio'}</title>
@@ -33,7 +29,7 @@ export default function MetaTags({
             <meta property="og:description" content={description || 'Espe Portfolio - Kendim için yaptığım portfolyo sitesi.'} />
             <meta property="og:image" content={metaImage} />
             <meta property="og:url" content={`https://espeeebne.github.io${pathname}`} />
-            <meta name="twitter:card" content={metaImage} />
+            <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title || 'Espe Portfolio'} />
             <meta name="twitter:description" content={description || 'Espe Portfolio - Kendim için yaptığım portfolyo sitesi.'} />
             <meta name="twitter:image" content={metaImage} />

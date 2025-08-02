@@ -1,7 +1,12 @@
 import { FC } from 'react';
-import { Card, CardActionArea, CardMedia, CardContent, Typography } from '@mui/material';
+import { CardActionArea, Box } from '@mui/material';
 import Link from 'next/link';
-import { projectCardStyles } from '../../styles/ProjectCard.styles';
+import {
+ProjectCardContainer,
+ProjectCardContent,
+ProjectCardTitle,
+ProjectCardDescription
+} from '../../styles/ProjectCard.styles';
 
 export interface Project {
 slug: string;
@@ -19,38 +24,39 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      passHref
-      legacyBehavior
-      style={{ textDecoration: 'none' }}
+      style={{ textDecoration: 'none', height: '100%', display: 'block' }}
     >
-        <Card sx={projectCardStyles.card}>
-            <CardActionArea>
-    <CardMedia
+        <ProjectCardContainer>
+            <CardActionArea sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
+    <Box
                 component="img"
-                sx={projectCardStyles.media}
-                image={project.imageUrl}
+                src={project.imageUrl}
                 alt={project.name}
+                sx={{
+                  height: 160,
+                  objectFit: 'cover',
+                  width: '100%',
+                  borderBottom: '1px solid',
+                  borderColor: 'divider'
+                }}
     />
-            <CardContent sx={projectCardStyles.content}>
-                <Typography
+            <ProjectCardContent>
+                <ProjectCardTitle
                 gutterBottom
                 variant="h6"
-                component="div"
-                sx={projectCardStyles.title}
                 >
                 {project.name}
-                </Typography>
-                <Typography
+                </ProjectCardTitle>
+                <ProjectCardDescription
                 variant="body2"
                 color="text.secondary"
-                sx={projectCardStyles.description}
                 >
                 {project.description}
-                </Typography>
-            </CardContent>
+                </ProjectCardDescription>
+            </ProjectCardContent>
             </CardActionArea>
-        </Card>
-            </Link>
+        </ProjectCardContainer>
+    </Link>
     );
 };
 

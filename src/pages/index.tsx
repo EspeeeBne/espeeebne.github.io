@@ -1,7 +1,8 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
 import { Container, Box, CircularProgress } from '@mui/material';
 import dynamic from 'next/dynamic';
+import MetaTags from '../components/MetaTags/MetaTags';
+
 const Hero = dynamic(() => import('../components/Hero/Hero'), {
   loading: () => (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 300 }}>
@@ -14,9 +15,10 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Espe Portfolyo</title>
-      </Head>
+      <MetaTags
+        title="Espe Portfolyo"
+        description="Espe Portfolio - Kendim için yaptığım portfolyo sitesi."
+      />
       <Container sx={{ mt: 4 }}>
         <Hero />
       </Container>

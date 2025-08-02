@@ -45,12 +45,12 @@ return (
     </Subtitle>
 
     <HeroStack>
-        <NextLink href="/about" passHref legacyBehavior>
+        <NextLink href="/about" style={{ textDecoration: 'none' }}>
         <HeroButton variant="outlined">
             {t('hero.about', 'Hakkımda')}
         </HeroButton>
         </NextLink>
-        <NextLink href="/projects" passHref legacyBehavior>
+        <NextLink href="/projects" style={{ textDecoration: 'none' }}>
         <HeroButton variant="outlined">
             {t('hero.projects', 'Projelerim')}
         </HeroButton>

@@ -5,7 +5,7 @@
     },
     "hero": {
         "title": "Portfolyoma Hoş geldiniz",
-        "subtitle": "Tayfur Furkan Hayat a.k.a. Espe, EspeeeBne, Sora, Rika",
+        "subtitle": "Tayfur Furkan Hayat a.k.a. Espe, EspeeeBne, furkito",
         "button": "Detaylı Bilgi",
         "projects":"Projeler",
         "about":"Hakkımda"
@@ -20,7 +20,23 @@
     "projects": {
         "title": "Projelerim",
         "notFound": "Proje bulunamadı.",
-        "back": "Geri Dön"
+        "back": "Geri Dön",
+        "relativeDate": {
+            "lessThanXSeconds": "{{count}} saniyeden az",
+            "xSeconds": "{{count}} saniye önce",
+            "halfAMinute": "yarım dakika önce",
+            "lessThanXMinutes": "{{count}} dakikadan az",
+            "xMinutes": "{{count}} dakika önce",
+            "aboutXHours": "yaklaşık {{count}} saat önce",
+            "xHours": "{{count}} saat önce",
+            "xDays": "{{count}} gün önce",
+            "aboutXMonths": "yaklaşık {{count}} ay önce",
+            "xMonths": "{{count}} ay önce",
+            "aboutXYears": "yaklaşık {{count}} yıl önce",
+            "xYears": "{{count}} yıl önce",
+            "overXYears": "{{count}} yıldan fazla",
+            "almostXYears": "neredeyse {{count}} yıl"
+        }
     },
     "404": {
         "header_text": "Aradığınız sayfayı bulamadık, kaldırılmış olabilir.",
@@ -31,7 +47,7 @@
     "projectsnav":"Projeler",
     "home":"Ana sayfa",
     "aboutnav":"Hakkımda",
-    "description": "Tayfur Furkan Hayat a.k.a Espe, EspeeeBne, Sora, Rika",
+    "description": "Tayfur Furkan Hayat a.k.a Espe, EspeeeBne",
     "contact": "İletişime Geç",
     "aboutTitle": "Hakkımda",
     "projectsTitle": "Projelerim",
